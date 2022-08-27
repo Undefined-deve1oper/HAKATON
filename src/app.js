@@ -1,5 +1,6 @@
 import './styles.css'
 import { ContextMenu } from "@/menu.js";
+import { ClicksModule } from "./modules/clicks.module.js"
 
 const contextMenu = new ContextMenu( ".menu" ); // Создаем контекстное меню
 // И добавляем в него пункты
@@ -20,12 +21,13 @@ menu.addEventListener( "click", ( event ) => {
     // Удаляем класс open у контекстного меню
     menu.classList.remove("open");
 
-    // switch ( targetModule.type ) {
-    //     case "имя вашей части":
-    //         const module = new Сама часть();
-    //         module.trigger();
-    //         return;
-    //     default:
-    //         return;
-    // }
+    switch ( targetModule.type ) {
+        case "click-analytics":
+            let module1 = new ClicksModule("click-session", "Подсчет кликов");
+            module1.trigger();
+            return;
+
+        default:
+            return;
+    }
 } );
