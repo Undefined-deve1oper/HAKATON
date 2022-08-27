@@ -1,12 +1,31 @@
 import './styles.css'
 import { ContextMenu } from "@/menu.js";
 
-const menu = new ContextMenu( ".menu" ); // Создаем контекстное меню
+const contextMenu = new ContextMenu( ".menu" ); // Создаем контекстное меню
 // И добавляем в него пункты
-menu.add( "click-analytics", "Аналитика кликов" );
-menu.add( "random-figure", "Случайная фигура" );
-menu.add( "countdown-timer", "Таймер отсчета" );
-menu.add( "random-sound", "Случайный звук" );
-menu.add( "random-background", "Случайный фон" );
-menu.add( "custom-message", "Случайное сообщение" );
-menu.add( "exit", "Выход" );
+contextMenu.add( "click-analytics", "Аналитика кликов" );
+contextMenu.add( "random-figure", "Случайная фигура" );
+contextMenu.add( "countdown-timer", "Таймер отсчета" );
+contextMenu.add( "random-sound", "Случайный звук" );
+contextMenu.add( "random-background", "Случайный фон" );
+contextMenu.add( "custom-message", "Случайное сообщение" );
+
+// Достаем меню из HTML
+const menu = document.querySelector( '.menu' );
+
+// Используем делегирования событий для модулей
+menu.addEventListener( "click", ( event ) => {
+    // Находим data-атрибут нажатого модуля
+    const targetModule = event.target.closest( ".menu-item" ).dataset;
+    // Удаляем класс open у контекстного меню
+    menu.classList.remove("open");
+
+    // switch ( targetModule.type ) {
+    //     case "имя вашей части":
+    //         const module = new Сама часть();
+    //         module.trigger();
+    //         return;
+    //     default:
+    //         return;
+    // }
+} );
