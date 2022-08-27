@@ -1,5 +1,5 @@
 import './styles.css'
-import { ContextMenu } from "@/menu";
+import { ContextMenu } from "@/menu.js";
 
 const menu = new ContextMenu( ".menu" ); // Создаем контекстное меню
 // И добавляем в него пункты
@@ -9,4 +9,4 @@ menu.add( "countdown-timer", "Таймер отсчета" );
 menu.add( "random-sound", "Случайный звук" );
 menu.add( "random-background", "Случайный фон" );
 menu.add( "custom-message", "Случайное сообщение" );
-menu.add( "exist", "Выход" );
+menu.add( "exit", "Выход" );
