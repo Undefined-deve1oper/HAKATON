@@ -11,9 +11,14 @@ export class ClicksModule extends Module {
 
     trigger() {
         let clickCount = -1;
-        this.#scope.addEventListener('click', () => {
+        function handleMouseClick(event) {
             clickCount++;
-        });
-        setTimeout(() => console.log(clickCount), 5000);
+          };
+        
+        this.#scope.addEventListener('click', handleMouseClick);
+        setTimeout(() => {
+            console.log(clickCount);
+            this.#scope.removeEventListener('click', handleMouseClick)
+        }, 5000);
     };
 }
