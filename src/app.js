@@ -15,7 +15,7 @@ contextMenu.add( "countdown-timer", "Таймер отсчета" );
 contextMenu.add( "random-sound", "Случайный звук" );
 contextMenu.add( "random-background", "Случайный фон" );
 contextMenu.add( "custom-message", "Случайное сообщение" );
-
+// git commit -m "I beg your pardon, this is the last commit"
 // Достаем меню из HTML
 const menu = document.querySelector( '.menu' );
 
@@ -26,11 +26,18 @@ menu.addEventListener( "click", ( event ) => {
     const targetModuleData = targetModule?.dataset;
 
     // Делаем кнопку не активной
-    Array.from(menu.children).forEach((module) => {
-        module.classList.add( "disabled" );
+    Array.from( menu.children ).forEach( ( module ) => {
+        switch ( module?.dataset.type ) {
+            case "random-figure":
+            case "random-background":
+                break;
+            default:
+                module.classList.add( "disabled" );
+                break;
+        }
         // Через 5 сек опять делаем активным
         setTimeout( () => module.classList.remove( "disabled" ), 5000 );
-    });
+    } );
 
     // Проверяем существует ли targetModule
     if ( targetModule ) {

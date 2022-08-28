@@ -7,8 +7,11 @@ export class TimerModule extends Module {
         super( type, text )
         this.#wrapper = document.querySelector( ".wrapper" );
         this.renderTimerBlock = ( targetContainer ) => {
-            targetContainer.insertAdjacentHTML( "beforeend",
-                `
+            const isTimer = document.querySelector('.timers');
+
+            if ( !isTimer ) {
+                targetContainer.insertAdjacentHTML( "beforeend",
+                    `
                     <div class="timers">
                         <div class="container">
                             <h1 id="headline">До нового года осталось</h1>
@@ -28,7 +31,8 @@ export class TimerModule extends Module {
                         </div>                    
                     </div>   
                 `
-            );
+                );
+            }
         };
         this.renderTimerBlock( this.#wrapper );
     }
