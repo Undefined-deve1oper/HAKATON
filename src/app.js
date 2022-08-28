@@ -2,6 +2,7 @@ import './styles.css'
 import { ContextMenu } from "@/menu.js";
 import { ClicksModule } from "./modules/clicks.module.js"
 import { BackgroundModule } from "./modules/background.module.js"
+import { MessageModule } from "@/modules/message.module.js";
 
 const contextMenu = new ContextMenu( ".menu" ); // Создаем контекстное меню
 // И добавляем в него пункты
@@ -18,20 +19,33 @@ const menu = document.querySelector( '.menu' );
 // Используем делегирования событий для модулей
 menu.addEventListener( "click", ( event ) => {
     // Находим data-атрибут нажатого модуля
-    const targetModule = event.target.closest( ".menu-item" ).dataset;
-    // Удаляем класс open у контекстного меню
-    menu.classList.remove("open");
+    const targetModule = event.target.closest( ".menu-item" );
+    const targetModuleData = targetModule?.dataset;
 
-    switch ( targetModule.type ) {
-        case "click-analytics":
-            let module1 = new ClicksModule("click-session", "Подсчет кликов");
-            module1.trigger();
-            return;
-        case "random-background":
-            let module2 = new BackgroundModule("change-background", "Случайный фон");
-            module2.trigger();
-            return;
-        default:
-            return;
+    // Проверяем существует ли targetModule
+    if ( targetModule ) {
+        // Делаем кнопку не активной
+        targetModule.classList.add( "disabled" );
+        // Удаляем класс open у контекстного меню
+        menu.classList.remove( "open" );
+        // Через 5 сек опять делаем активным
+        setTimeout( () => targetModule.classList.remove( "disabled" ), 5000 );
+
+        switch ( targetModuleData.type ) {
+            case "click-analytics":
+                let moduleClick = new ClicksModule( "click-session", "Подсчет кликов" );
+                moduleClick.trigger();
+                return;
+            case "custom-message":
+                let moduleMessage = new MessageModule( "custom-message", "Случайное сообщение" );
+                moduleMessage.trigger();
+                return;
+            case "random-background":
+                let moduleBackground = new BackgroundModule( "change-background", "Случайный фон" );
+                moduleBackground.trigger();
+                return;
+            default:
+                return;
+        }
     }
 } );

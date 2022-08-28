@@ -62,14 +62,14 @@ export class MessageModule extends Module {
 
             setTimeout( () => {
                 messageItem.classList.remove( "active" );
-            }, 5000 );
+            }, 7000 );
             setTimeout( () => {
                 messageItem.remove();
                 if ( !messagesCardsContainer.children.length > 0 ) {
                     messagesContainer.classList.remove( "active" );
                     setTimeout( () => messagesContainer.remove(), 800 );
                 }
-            }, 5800 );
+            }, 7800 );
         };
 
         this.createMessagesSection( this.wrapper );
