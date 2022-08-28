@@ -121,7 +121,7 @@ export class MessageModule extends Module {
             };
         } catch ( e ) {
             const messagesContainer = document.querySelector( ".messages__row" );
-            messagesContainer.innerHTML = "<h1 class='info'>Упс произошла ошибка, попробуйте еще раз)</h1>";
+            messagesContainer.innerHTML = "<h1 class='info'>Упс кот ушел есть, попробуйте еще раз)</h1>";
 
             throw new Error( `${e}. Ошибка в запросе - ` );
         } finally {
