@@ -125,12 +125,18 @@ body {
     visibility: hidden;
     transition: all 0.8s ease-out 0s;
 }
-.error {
+.info {
     font-size: 28px;
     color: #000;
     font-weight: 700;
     letter-spacing: 2.5px;
     text-align: center;
+}
+.info__sound {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }
 .messages.active {
     opacity: 1;
@@ -402,6 +408,9 @@ body {
 }
 
 @media (max-width: 520px){
+    .info {
+        font-size: 20px;
+    }
     .messages__title {
         font-size: 24px;
         line-height: 32px;

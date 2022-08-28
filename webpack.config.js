@@ -1,4 +1,5 @@
 const path = require( 'path' )
+const SRC = path.resolve(__dirname, 'node_modules');
 const HtmlWebpackPlugin = require( 'html-webpack-plugin' )
 const MiniCssExtractPlugin = require( 'mini-css-extract-plugin' )
 
@@ -10,7 +11,7 @@ module.exports = ( env, argv ) => {
     console.log( 'isDev', isDev )
 
     const filename = ( ext ) =>
-        isProd ? `[name].[contenthash].bundle.${ ext }` : `[name].bundle.${ ext }`
+        isProd ? `[name].[contenthash].bundle.${ ext }` : `[name].bundle.${ ext }`;
 
     return {
         target: 'web',
@@ -49,6 +50,10 @@ module.exports = ( env, argv ) => {
         ],
         module: {
             rules: [
+                {
+                    test: /\.(png|svg|jpg|jpeg|gif|ogg|mp3|wav)$/i,
+                    use: ['file-loader'],
+                },
                 {
                     test: /\.css$/i,
                     use: [MiniCssExtractPlugin.loader, "css-loader"],

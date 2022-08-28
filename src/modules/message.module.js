@@ -77,6 +77,10 @@ export class MessageModule extends Module {
 
     async fetchingData() {
         try {
+            // Удаляем предупреждение обошибке
+            const info = document.querySelector(".info");
+            if ( info ) info.remove();
+
             const loader = document.getElementById( "loader" );
             loader.style.display = "block";
 
@@ -117,10 +121,9 @@ export class MessageModule extends Module {
             };
         } catch ( e ) {
             const messagesContainer = document.querySelector( ".messages__row" );
+            messagesContainer.innerHTML = "<h1 class='info'>Упс произошла ошибка, попробуйте еще раз)</h1>";
 
-            messagesContainer.innerHTML = "<h1 class='error'>Упс произошла ошибка, попробуйте еще раз)</h1>";
-
-            throw new Error( "Ошибка в запросе - " );
+            throw new Error( `${e}. Ошибка в запросе - ` );
         } finally {
             // Скрываем статус загрузки
             const loader = document.getElementById( "loader" );

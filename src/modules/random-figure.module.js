@@ -22,10 +22,10 @@ export class RandomFigure extends Module {
         figure.classList.add( randomFigureClass );
         figure.style.cssText = `
             position: absolute;
-            top: ${ random( 0, this.pageHeight ) }px;
-            left: ${random( 0, this.pageWidth ) }px;
-            width: ${ random( 50, 200 ) }px;
-            height: ${ random( 20, 180 ) }px;
+            top: ${ random(  this.pageHeight ) }px;
+            left: ${random(  this.pageWidth ) }px;
+            width: ${ random(  200 ) }px;
+            height: ${ random(  180 ) }px;
             background: ${ getRandomColor() };
         `;
 
