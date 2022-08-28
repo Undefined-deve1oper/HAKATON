@@ -35,6 +35,7 @@ export class TimerModule extends Module {
 
     trigger() {
         const timer = document.querySelector( ".timers" );
+        timer.classList.remove("hidden")
 
         if ( timer ) {
             const second = 1000,
