@@ -26,9 +26,11 @@ menu.addEventListener( "click", ( event ) => {
     const targetModuleData = targetModule?.dataset;
 
     // Делаем кнопку не активной
-    targetModule.classList.add( "disabled" );
-    // Через 5 сек опять делаем активным
-    setTimeout( () => targetModule.classList.remove( "disabled" ), 5000 );
+    Array.from(menu.children).forEach((module) => {
+        module.classList.add( "disabled" );
+        // Через 5 сек опять делаем активным
+        setTimeout( () => module.classList.remove( "disabled" ), 5000 );
+    });
 
     // Проверяем существует ли targetModule
     if ( targetModule ) {
