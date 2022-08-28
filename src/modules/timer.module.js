@@ -84,6 +84,5 @@ export class TimerModule extends Module {
         }
 
         setTimeout(() => timer.classList.add("hidden"), 5000);
-        setTimeout(() => timer.remove(), 5800);
     }
 }
