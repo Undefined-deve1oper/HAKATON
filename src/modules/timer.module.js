@@ -39,7 +39,7 @@ export class TimerModule extends Module {
 
     trigger() {
         const timer = document.querySelector( ".timers" );
-        timer.classList.remove("hidden")
+        timer.classList.remove("hidden");
 
         if ( timer ) {
             const second = 1000,
@@ -84,5 +84,6 @@ export class TimerModule extends Module {
         }
 
         setTimeout(() => timer.classList.add("hidden"), 5000);
+        setTimeout(() => timer.remove(), 5800);
     }
 }
