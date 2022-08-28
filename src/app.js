@@ -3,6 +3,7 @@ import { ContextMenu } from "@/menu.js";
 import { ClicksModule } from "./modules/clicks.module.js"
 import { BackgroundModule } from "./modules/background.module.js"
 import { MessageModule } from "@/modules/message.module.js";
+import { RandomFigure } from "@/modules/random-figure.module.js";
 
 const contextMenu = new ContextMenu( ".menu" ); // Создаем контекстное меню
 // И добавляем в него пункты
@@ -24,17 +25,21 @@ menu.addEventListener( "click", ( event ) => {
 
     // Проверяем существует ли targetModule
     if ( targetModule ) {
-        // Делаем кнопку не активной
-        targetModule.classList.add( "disabled" );
         // Удаляем класс open у контекстного меню
         menu.classList.remove( "open" );
-        // Через 5 сек опять делаем активным
-        setTimeout( () => targetModule.classList.remove( "disabled" ), 5000 );
 
         switch ( targetModuleData.type ) {
             case "click-analytics":
                 let moduleClick = new ClicksModule( "click-session", "Подсчет кликов" );
                 moduleClick.trigger();
+                // Делаем кнопку не активной
+                targetModule.classList.add( "disabled" );
+                // Через 5 сек опять делаем активным
+                setTimeout( () => targetModule.classList.remove( "disabled" ), 5000 );
+                return;
+            case "random-figure":
+                let moduleFigure = new RandomFigure( "random-figure", "Случайная фигура" );
+                moduleFigure.trigger();
                 return;
             case "custom-message":
                 let moduleMessage = new MessageModule( "custom-message", "Случайное сообщение" );

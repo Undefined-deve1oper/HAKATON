@@ -57,8 +57,7 @@ export class ClicksModule extends Module {
                 const { target: targetElement } = event;
 
                 // Если был нажат крестик или черное пространсто, то модальное окно закрывется
-                if ( !targetElement.closest( ".popup__content" )
-                    || targetElement.closest( "close-popup" ) ) {
+                if ( targetElement.closest( ".close-popup" ) ) {
                     clickPopup.classList.remove( "open" );
                 }
             } );
