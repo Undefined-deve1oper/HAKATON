@@ -1,6 +1,7 @@
 import './styles.css'
 import { ContextMenu } from "@/menu.js";
-import { MessageModule } from "@/modules/message.module.js";
+import { ClicksModule } from "./modules/clicks.module.js"
+import { BackgroundModule } from "./modules/background.module.js"
 
 const contextMenu = new ContextMenu( ".menu" ); // Создаем контекстное меню
 // И добавляем в него пункты
@@ -22,9 +23,13 @@ menu.addEventListener( "click", ( event ) => {
     menu.classList.remove("open");
 
     switch ( targetModule.type ) {
-        case "custom-message":
-            const module = new MessageModule("custom-message", "Случайное сообщение");
-            module.trigger();
+        case "click-analytics":
+            let module1 = new ClicksModule("click-session", "Подсчет кликов");
+            module1.trigger();
+            return;
+        case "random-background":
+            let module2 = new BackgroundModule("change-background", "Случайный фон");
+            module2.trigger();
             return;
         default:
             return;
