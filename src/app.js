@@ -1,6 +1,6 @@
 import './styles.css'
 import { ContextMenu } from '@/menu'
-import { randomBody } from './modules/random-figure.module'
+import { RandomFigure } from './modules/random-figure.module'
 
 const menu = new ContextMenu('.menu') // Создаем контекстное меню
 // И добавляем в него пункты
@@ -17,16 +17,16 @@ const mainMenu = document.querySelector('#menu')
 mainMenu.addEventListener('click', (event) => {
   // Находим data-атрибут нажатого модуля
   const targetModule = event.target.closest('.menu-item').dataset
-  randomBody()
+
   // Удаляем класс open у контекстного меню
   mainMenu.classList.remove('open')
 
-  // switch ( targetModule.type ) {
-  //     case "имя вашей части":
-  //         const module = new Сама часть();
-  //         module.trigger();
-  //         return;
-  //     default:
-  //         return;
-  // }
+  switch (targetModule.type) {
+    case 'random-figure':
+      const module = new RandomFigure('click-random-figure', 'Случайная фигура')
+      module.trigger()
+      return
+    default:
+      return
+  }
 })
