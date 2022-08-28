@@ -15,7 +15,6 @@ contextMenu.add( "countdown-timer", "Таймер отсчета" );
 contextMenu.add( "random-sound", "Случайный звук" );
 contextMenu.add( "random-background", "Случайный фон" );
 contextMenu.add( "custom-message", "Случайное сообщение" );
-// git commit -m "I beg your pardon, this is the last commit"
 // Достаем меню из HTML
 const menu = document.querySelector( '.menu' );
 
