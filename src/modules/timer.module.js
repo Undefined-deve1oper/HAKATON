@@ -77,5 +77,7 @@ export class TimerModule extends Module {
                     //seconds
                 }, 0 );
         }
+
+        setTimeout(() => timer.classList.add("hidden"), 5000);
     }
 }

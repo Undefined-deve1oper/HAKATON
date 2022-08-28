@@ -25,6 +25,11 @@ menu.addEventListener( "click", ( event ) => {
     const targetModule = event.target.closest( ".menu-item" );
     const targetModuleData = targetModule?.dataset;
 
+    // Делаем кнопку не активной
+    targetModule.classList.add( "disabled" );
+    // Через 5 сек опять делаем активным
+    setTimeout( () => targetModule.classList.remove( "disabled" ), 5000 );
+
     // Проверяем существует ли targetModule
     if ( targetModule ) {
         // Удаляем класс open у контекстного меню
@@ -34,10 +39,6 @@ menu.addEventListener( "click", ( event ) => {
             case "click-analytics":
                 let moduleClick = new ClicksModule( "click-session", "Подсчет кликов" );
                 moduleClick.trigger();
-                // Делаем кнопку не активной
-                targetModule.classList.add( "disabled" );
-                // Через 5 сек опять делаем активным
-                setTimeout( () => targetModule.classList.remove( "disabled" ), 5000 );
                 return;
             case "random-figure":
                 let moduleFigure = new RandomFigure( "random-figure", "Случайная фигура" );
