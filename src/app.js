@@ -1,5 +1,6 @@
 import './styles.css'
 import { ContextMenu } from "@/menu.js";
+import { MessageModule } from "@/modules/message.module.js";
 
 const contextMenu = new ContextMenu( ".menu" ); // Создаем контекстное меню
 // И добавляем в него пункты
@@ -20,12 +21,12 @@ menu.addEventListener( "click", ( event ) => {
     // Удаляем класс open у контекстного меню
     menu.classList.remove("open");
 
-    // switch ( targetModule.type ) {
-    //     case "имя вашей части":
-    //         const module = new Сама часть();
-    //         module.trigger();
-    //         return;
-    //     default:
-    //         return;
-    // }
+    switch ( targetModule.type ) {
+        case "custom-message":
+            const module = new MessageModule("custom-message", "Случайное сообщение");
+            module.trigger();
+            return;
+        default:
+            return;
+    }
 } );
