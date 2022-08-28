@@ -5,6 +5,7 @@ import { BackgroundModule } from "./modules/background.module.js"
 import { MessageModule } from "@/modules/message.module.js";
 import { RandomFigure } from "@/modules/random-figure.module.js";
 import { SoundModule } from "@/modules/sound.module.js";
+import { TimerModule } from "@/modules/timer.module.js";
 
 const contextMenu = new ContextMenu( ".menu" ); // Создаем контекстное меню
 // И добавляем в него пункты
@@ -42,9 +43,13 @@ menu.addEventListener( "click", ( event ) => {
                 let moduleFigure = new RandomFigure( "random-figure", "Случайная фигура" );
                 moduleFigure.trigger();
                 return;
-                case "random-sound":
+            case "random-sound":
                 let moduleSound = new SoundModule( "random-sound", "Случайный звука" );
                 moduleSound.trigger();
+                return;
+            case "countdown-timer":
+                let moduleTimer = new TimerModule( "countdown-timer", "Таймер отсчета" );
+                moduleTimer.trigger();
                 return;
             case "custom-message":
                 let moduleMessage = new MessageModule( "custom-message", "Случайное сообщение" );
